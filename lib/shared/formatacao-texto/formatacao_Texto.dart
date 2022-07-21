@@ -1,0 +1,244 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sua_musica_desafio_games/components/size-config/size-config.dart';
+import 'package:sua_musica_desafio_games/shared/constants/colors/colors-app.dart';
+
+Widget textoAppBar(String texto) {
+  return Align(
+    alignment: Alignment.center,
+    child: Text(
+      texto,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        color: ColorsApp.corTexto,
+        fontSize: SizeConfig.safeBlockHorizontal! * 5,
+      ),
+    ),
+  );
+}
+
+Widget textoLabelTabBar(String texto) {
+  return Text(
+    texto,
+    maxLines: 1,
+    overflow: TextOverflow.ellipsis,
+    style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal! * 4),
+  );
+}
+
+Widget textoNomeJogo(String texto) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 30, left: 25, right: 25),
+    child: Text(
+      textAlign: TextAlign.center,
+      texto,
+      maxLines: 3,
+      overflow: TextOverflow.ellipsis,
+      style: GoogleFonts.roboto(
+          fontSize: SizeConfig.safeBlockHorizontal! * 4,
+          color: ColorsApp.corTexto,
+          fontWeight: FontWeight.bold),
+    ),
+  );
+}
+
+// Widget textoHomeCategoria(String texto) {
+//   return Padding(
+//     padding: const EdgeInsets.only(left: 20, top: 5, bottom: 8),
+//     child: Align(
+//       alignment: Alignment.centerLeft,
+//       child: Text(
+//         texto,
+//         maxLines: 1,
+//         overflow: TextOverflow.ellipsis,
+//         style: GoogleFonts.inter(
+//           fontSize: SizeConfig.safeBlockHorizontal! * 6,
+//         ),
+//       ),
+//     ),
+//   );
+// }
+//
+// Widget textoListagemNomePet(String texto) {
+//   return Padding(
+//     padding: const EdgeInsets.only(left: 1, top: 1, bottom: 1),
+//     child: Align(
+//       alignment: Alignment.centerLeft,
+//       child: Text(
+//         texto,
+//         maxLines: 1,
+//         overflow: TextOverflow.ellipsis,
+//         style: GoogleFonts.inter(
+//           //  color: Colors.grey[800],
+//           fontSize: SizeConfig.safeBlockHorizontal! * 4.5,
+//           fontWeight: FontWeight.bold,
+//         ),
+//       ),
+//     ),
+//   );
+// }
+//
+// Widget textoListagemOrigemPet(String texto) {
+//   return Padding(
+//     padding: const EdgeInsets.only(left: 1, top: 1, bottom: 1),
+//     child: Align(
+//       alignment: Alignment.centerLeft,
+//       child: Text(
+//         texto,
+//         maxLines: 1,
+//         overflow: TextOverflow.ellipsis,
+//         style: GoogleFonts.inter(
+//           fontSize: SizeConfig.safeBlockHorizontal! * 3,
+//         ),
+//       ),
+//     ),
+//   );
+// }
+//
+// Widget textoListagemVidaUtilPet(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     overflow: TextOverflow.ellipsis,
+//     style: GoogleFonts.inter(
+//       fontSize: SizeConfig.safeBlockHorizontal! * 3.5,
+//     ),
+//   );
+// }
+//
+// Widget textoDetalhePetNome(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: GoogleFonts.inter(
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 6,
+//     ),
+//   );
+// }
+//
+// Widget textoDetalhePetOrigem(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 2,
+//     style: GoogleFonts.inter(
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 4,
+//     ),
+//   );
+// }
+//
+// Widget textoDetalhePetInfo(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: GoogleFonts.inter(
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 3,
+//     ),
+//   );
+// }
+//
+// Widget textoDetalhePetInfoTitulo(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: GoogleFonts.inter(
+//       fontSize: SizeConfig.safeBlockHorizontal! * 3.5,
+//     ),
+//   );
+// }
+//
+// Widget textoTabelaPetRow(String texto) {
+//   return Padding(
+//     padding: const EdgeInsets.all(1),
+//     child: Text(
+//       texto,
+//       maxLines: 1,
+//       style: GoogleFonts.inter(
+//         fontSize: SizeConfig.safeBlockHorizontal! * 4,
+//       ),
+//     ),
+//   );
+// }
+//
+// Widget textoDetalhePetInformation(String texto) {
+//   return Padding(
+//     padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
+//     child: Text(
+//       texto,
+//       maxLines: 1,
+//       style: GoogleFonts.inter(
+//         fontWeight: FontWeight.bold,
+//         fontSize: SizeConfig.safeBlockHorizontal! * 6,
+//       ),
+//     ),
+//   );
+// }
+//
+// Widget textoButtonAdoption(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: GoogleFonts.inter(
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 5,
+//     ),
+//   );
+// }
+//
+// Widget textoAlert(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: TextStyle(
+//       fontSize: SizeConfig.safeBlockHorizontal! * 3.5,
+//     ),
+//   );
+// }
+//
+// Widget textoAvatarRandom(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: TextStyle(
+//       fontSize: SizeConfig.safeBlockHorizontal! * 4,
+//     ),
+//   );
+// }
+//
+// Widget textoAvatarRandomPosted(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: TextStyle(
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 3,
+//     ),
+//   );
+// }
+//
+// Widget textoContactButton(String texto) {
+//   return Text(
+//     texto,
+//     maxLines: 1,
+//     style: TextStyle(
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 4,
+//     ),
+//   );
+// }
+//
+// Widget textoLoginButton(String texto) {
+//   return Text(
+//     textAlign: TextAlign.left,
+//     texto,
+//     maxLines: 1,
+//     style: TextStyle(
+//       color: Colors.white,
+//       fontWeight: FontWeight.bold,
+//       fontSize: SizeConfig.safeBlockHorizontal! * 4.8,
+//     ),
+//   );
+// }

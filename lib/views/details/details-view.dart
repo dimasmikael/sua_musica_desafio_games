@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sua_musica_desafio_games/components/custom-appbar/custom-appbar-widget.dart';
 
 class DetailsView extends StatefulWidget {
   const DetailsView({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class DetailsView extends StatefulWidget {
 class _DetailsViewState extends State<DetailsView> {
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.amberAccent,);
+    return const Scaffold(
+      appBar: CustomAppBarWidget(),
+    );
   }
 }
