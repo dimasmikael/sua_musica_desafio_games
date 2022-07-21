@@ -11,10 +11,13 @@ class TabBarHomeWidget extends StatefulWidget {
   State<TabBarHomeWidget> createState() => _TabBarHomeWidgetState();
 }
 
-class _TabBarHomeWidgetState extends State<TabBarHomeWidget> {
+class _TabBarHomeWidgetState extends State<TabBarHomeWidget>
+    with SingleTickerProviderStateMixin {
   //final _scaffoldKey = GlobalKey<ScaffoldState>();
+  late TabController tabController;
+  bool showTab = true;
 
-  static  final List<Widget> _tabs = [
+  static final List<Widget> _tabs = [
     Tab(
       child: textoLabelTabBar('Nintendo 64'),
     ),
@@ -25,6 +28,21 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget> {
       child: textoLabelTabBar('Xbox One'),
     ),
   ];
+
+  @override
+  void initState() {
+    tabController = TabController(
+      length: _tabs.length,
+      vsync: this,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
 
   Widget tabBarWidget() {
     return Column(
@@ -37,19 +55,35 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              // showTab
+              //     ? Container(
+              //   constraints: BoxConstraints(maxHeight: 150.0),
+              //   child: Material(
+              //       color: Colors.blue,
+              //       child: TabBar(
+              //         controller: tabController,
+              //         isScrollable: false,
+              //         indicatorColor: Color(0xFFFBD30E),
+              //         indicatorWeight: 3,
+              //         tabs: _tabs
+              //             .map((category) => Tab(text: category))
+              //             .toList(),
+              //       )),
+              // )
+              //     : Container(),
               TabBar(
                   // indicator: const UnderlineTabIndicator(
                   //     borderSide: BorderSide(width: 5.0),
                   //     insets: EdgeInsets.symmetric(horizontal:16.0)
                   // ),
 
-          // indicator: UnderlineTabIndicator(
-          //   borderSide: BorderSide(
-          //   width: 0.1,
-          //   color: ColorsApp.corLabelTabBar,
-          // ),),
+                  // indicator: UnderlineTabIndicator(
+                  //   borderSide: BorderSide(
+                  //   width: 0.1,
+                  //   color: ColorsApp.corLabelTabBar,
+                  // ),),
                   labelPadding: const EdgeInsets.only(top: 10),
-                labelColor: ColorsApp.corLabelTabBar,
+                  labelColor: ColorsApp.corLabelTabBar,
                   unselectedLabelColor: ColorsApp.corUnselectedLabelTabBar,
                   indicatorColor: ColorsApp.corIndicatorTabBar,
                   // indicatorPadding: EdgeInsets.all(30),
@@ -57,8 +91,8 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget> {
                   indicatorSize: TabBarIndicatorSize.label,
                   tabs: _tabs),
               SizedBox(
-                height: SizeConfig.safeBlockVertical! * 100,
-                child: const TabBarView(
+                height: SizeConfig.safeBlockVertical! * 80,
+                child: TabBarView(
                   children: <Widget>[
                     GridViewTabBarWidget(),
                     GridViewTabBarWidget(),
@@ -66,6 +100,15 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget> {
                   ],
                 ),
               )
+
+              // const TabBarView(
+              //      children: <Widget>[
+              //
+              //        // GridViewTabBarWidget(),
+              //        // GridViewTabBarWidget(),
+              //        // GridViewTabBarWidget(),
+              //      ],
+              //    ),
             ],
           ),
         ),

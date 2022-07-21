@@ -17,8 +17,9 @@ class _ImageGridViewWidgetState extends State<ImageGridViewWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    double altura = SizeConfig.safeBlockVertical! * 13;
-    double largura = SizeConfig.safeBlockHorizontal! * 29;
+    double altura = SizeConfig.screenHeight! * .13;
+    double largura = SizeConfig.screenWidth! * .30;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

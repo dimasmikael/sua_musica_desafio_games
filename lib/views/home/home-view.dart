@@ -16,21 +16,22 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return SafeArea(
-      child: DefaultTabController(
-        initialIndex: 0,
-        length: 3,
-        child: Scaffold(
-          appBar: CustomAppBarWidget(
-            texto: textoAppBar("Game Lovers App"),
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [TabBarHomeWidget()],
-            ),
-          ),
+      child: Scaffold(
+        appBar: CustomAppBarWidget(
+          texto: textoAppBar("Game Lovers App"),
         ),
-      ),
+        body:
+        // Container(
+        //   child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
+        SingleChildScrollView(
+          child: Column(
+
+              children: [
+          TabBarHomeWidget(),
+
+          ]  ),
+   ),
+    ),
     );
   }
 }
