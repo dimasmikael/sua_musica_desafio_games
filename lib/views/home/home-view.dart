@@ -20,18 +20,17 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
         appBar: CustomAppBarWidget(
           texto: textoAppBar("Game Lovers App"),
         ),
-        body:
-        // Container(
-        //   child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
-        SingleChildScrollView(
-          child: Column(
-
-              children: [
-          TabBarHomeWidget(),
-
-          ]  ),
-   ),
-    ),
+        body: Center(
+          child: SizedBox(
+            height: SizeConfig.screenHeight!,
+            child: Column(children: const [
+              Expanded(
+                child: TabBarHomeWidget(),
+              ),
+            ]),
+          ),
+        ),
+      ),
     );
   }
 }

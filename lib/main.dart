@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:sua_musica_desafio_games/shared/constants/colors/colors-statusbar.dart';
 import 'package:sua_musica_desafio_games/views/home/home-view.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,9 +20,9 @@ class MyApp extends StatelessWidget {
         DeviceOrientation.portraitDown,
       ],
     );
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: HomeView()
     );
   }
 }

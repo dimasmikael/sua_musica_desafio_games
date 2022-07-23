@@ -14,8 +14,8 @@ class GridViewTabBarWidget extends StatelessWidget {
     double largura = SizeConfig.screenWidth! * 100;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 25.0),
-      child: GestureDetector(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 25.0),
+        child: GestureDetector(
           onTap: () {
             Navigator.push(
               context,
@@ -24,38 +24,30 @@ class GridViewTabBarWidget extends StatelessWidget {
               ),
             );
           },
-          child: Column(
-            children: [
-              Expanded(
-                  child: GridView.builder(
-               //shrinkWrap: true,
-                   // scrollDirection: Axis.vertical,
-                   // physics: NeverScrollableScrollPhysics(),
-                    physics: ScrollPhysics(),
-                itemCount: 10,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: largura / altura,
+          child: GridView.builder(
+            shrinkWrap: true,
+            itemCount: 10,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: largura / altura,
+            ),
+            itemBuilder: (BuildContext ctx, index) {
+              return Container(
+                alignment: Alignment.center,
+                decoration: myBoxDecoration(5.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const ImageGridViewWidget(),
+                    textoNomeJogo("The Legend of Zelda: Majora's Mask"),
+                  ],
                 ),
-                itemBuilder: (BuildContext ctx, index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    decoration: myBoxDecoration(5.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const ImageGridViewWidget(),
-                        textoNomeJogo("The Legend of Zelda: Majora's Mask"),
-                      ],
-                    ),
-                  );
-                },
-              ))
-            ],
-          )),
-    );
+              );
+            },
+          ),
+        ));
   }
 }
