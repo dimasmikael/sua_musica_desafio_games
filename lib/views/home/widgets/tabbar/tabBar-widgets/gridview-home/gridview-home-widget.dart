@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:sua_musica_desafio_games/components/boxdecoration/boxdecoration-widget.dart';
 import 'package:sua_musica_desafio_games/components/size-config/size-config.dart';
+import 'package:sua_musica_desafio_games/model/game.dart';
 import 'package:sua_musica_desafio_games/shared/formatacao-texto/formatacao_Texto.dart';
 import 'package:sua_musica_desafio_games/views/details/details-view.dart';
 import 'package:sua_musica_desafio_games/views/home/widgets/tabbar/tabBar-widgets/gridview-home/widgets/image-gridview-widget.dart';
 
 class GridViewTabBarWidget extends StatelessWidget {
-  const GridViewTabBarWidget({Key? key}) : super(key: key);
-
+  const GridViewTabBarWidget(this.games, {Key? key}) : super(key: key);
+  final List<GameModel>? games;
   @override
   Widget build(BuildContext context) {
     double altura = SizeConfig.screenHeight! * 75;
     double largura = SizeConfig.screenWidth! * 100;
+
+    // print(games?.id ??"kk");
 
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 25.0),
@@ -42,7 +45,7 @@ class GridViewTabBarWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const ImageGridViewWidget(),
-                    textoNomeJogo("The Legend of Zelda: Majora's Mask"),
+                    textoNomeJogo(games?[index]?.id.toString() ??'kk'),
                   ],
                 ),
               );
