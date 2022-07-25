@@ -5,7 +5,8 @@ import 'package:sua_musica_desafio_games/bloc/get_games_bloc.dart';
 import 'package:sua_musica_desafio_games/components/size-config/size-config.dart';
 import 'package:sua_musica_desafio_games/model/game.dart';
 import 'package:sua_musica_desafio_games/model/game_models/plataforma_model.dart';
-import 'package:sua_musica_desafio_games/model/game_response.dart';
+import 'package:sua_musica_desafio_games/model/game_models/platform.dart';
+import 'package:sua_musica_desafio_games/model/plataforma_response.dart';
 import 'package:sua_musica_desafio_games/provider/game_provider/game_provider_model.dart';
 import 'package:sua_musica_desafio_games/shared/constants/colors/colors-app.dart';
 import 'package:sua_musica_desafio_games/shared/formatacao-texto/formatacao_Texto.dart';
@@ -20,19 +21,20 @@ class TabBarHomeWidget extends StatefulWidget {
 
 class _TabBarHomeWidgetState extends State<TabBarHomeWidget>
     with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-
+   //int? platformId;
   @override
   void initState() {
     super.initState();
    // _carregarDadosGame();
     print("segundo");
 
-    getGamesBloc.getGames();
+    getGamesBloc.getPlataforma();
+
 
   }
 
-  GameResponse? gameResponse;
-  List<GameModel>? games;
+  // GameResponse? gameResponse;
+  // List<GameModel>? games;
   // Future<GameModel?>? _carregarDadosGame() async {
   //  // BaseService.loading.start(context);
   //
@@ -56,24 +58,26 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget>
   //   }
   // }
 
-  static final List<Widget> _tabs = [
-    Tab(
-      child: textoLabelTabBar('Nintendo 64'),
-    ),
-    Tab(
-      child: textoLabelTabBar('Playstation 4'),
-    ),
-    Tab(
-      child: textoLabelTabBar('Xbox One'),
-    ),
-  ];
+  // static final List<Widget> _tabs = [
+  //   Tab(
+  //     child: textoLabelTabBar('Nintendo 64'),
+  //   ),
+  //   Tab(
+  //     child: textoLabelTabBar('Playstation 4'),
+  //   ),
+  //   Tab(
+  //     child: textoLabelTabBar('Xbox One'),
+  //   ),
+  // ];
 
-  Widget tabBarWidget([GameResponse? data]) {
+ TabController? _tabController;
+
+  Widget tabBarWidget([PlataformaResponse? data]) {
   //  gameResponse= Provider.of<GameModel>(context)  ;
 
-    List<GameModel>? games = data?.games;
+    List< PlatformModel>? plataformas = data?. plataformas;
 
-      print("games!.length ??00");print(games![0].id);
+    //  print("games!.length ??00");print(games![0].name);
 
 
     //GameModel? games = data;
@@ -83,28 +87,51 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget>
    // print(games?.id ?? "00");
 
     return DefaultTabController(
-      length: 3,
+      length: plataformas!.length,
       child: Column(
         children: <Widget>[
           Expanded(
             child: Container(
               child: TabBar(
-                  labelPadding: const EdgeInsets.only(top: 10),
+                isScrollable: true,
+                  labelPadding: const EdgeInsets.only(top: 10,left: 5),
                   labelColor: ColorsApp.corLabelTabBar,
                   unselectedLabelColor: ColorsApp.corUnselectedLabelTabBar,
                   indicatorColor: ColorsApp.corIndicatorTabBar,
                   indicatorSize: TabBarIndicatorSize.label,
-                  tabs: _tabs),
-            ),
-          ),
+                  tabs:  plataformas!.map((PlatformModel plataforma) {
+                    return Tab(
+                      text:  plataforma.name,
+                     // icon: Icon(choice.icon),
+                    );
+                  }).toList(),
+    ),
+
+    ),
+    ),
+
+
           Expanded(
             flex: 8,
             child: Container(
-              child:  TabBarView(children: <Widget>[
-                GridViewTabBarWidget(games ),
-                GridViewTabBarWidget(games ),
-                GridViewTabBarWidget(games ),
-              ]),
+              child:
+
+              TabBarView(
+                controller: _tabController,
+                children: plataformas.isEmpty
+                    ? <Widget>[]
+                    : plataformas.map((dynamicContent) {
+                  return GridViewTabBarWidget(plataformas );
+                }).toList(),
+              ),
+
+
+
+              // TabBarView(children: <Widget>[
+              //   GridViewTabBarWidget(plataformas ),
+              //   GridViewTabBarWidget(plataformas  ),
+              //   GridViewTabBarWidget(plataformas  ),
+              // ]),
             ),
           ), // showTab
         ],
@@ -121,9 +148,9 @@ class _TabBarHomeWidgetState extends State<TabBarHomeWidget>
 
     //getGamesBloc.getGames();
 
-    return  StreamBuilder<GameResponse>(
-      stream: getGamesBloc.subject.stream,
-      builder: (context, AsyncSnapshot<GameResponse> snapshot) {
+    return  StreamBuilder<PlataformaResponse>(
+      stream: getGamesBloc.subject1.stream,
+      builder: (context, AsyncSnapshot<PlataformaResponse> snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data?.error != null && snapshot.data!.error!.length > 0) {
             return Text(snapshot.data?.error.toString() ??"eeero");

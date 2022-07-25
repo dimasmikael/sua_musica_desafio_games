@@ -1,4 +1,4 @@
-// import 'package:igdb/model/game_response.dart';
+// import 'package:igdb/model/plataforma_response.dart';
 // import 'package:igdb/repository/repository.dart';
 // import 'package:rxdart/subjects.dart';
 //
